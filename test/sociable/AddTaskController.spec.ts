@@ -6,7 +6,7 @@ import { AddTaskController } from '@domain/task/controllers/AddTask.controller'
 import { AddTaskService } from '@domain/task/services'
 import { getRepositoryToken } from '@nestjs/typeorm'
 import { TaskListModel, TaskModel } from '@domain/models'
-import { type MockType } from './fixtures/Mock.type'
+import { type MockType } from '../fixtures/Mock.type'
 import { type Repository } from 'typeorm'
 
 describe('AddTaskController (sociable)', () => {
