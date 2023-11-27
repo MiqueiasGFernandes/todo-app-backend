@@ -23,6 +23,7 @@ module.exports = {
         "sourceType": "module"
     },
     "rules": {
-        "@typescript-eslint/strict-boolean-expressions": 0
+        "@typescript-eslint/strict-boolean-expressions": 0,
+        "@typescript-eslint/no-extraneous-class": 0
     }
 }
