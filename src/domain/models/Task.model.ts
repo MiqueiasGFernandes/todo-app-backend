@@ -2,7 +2,7 @@ import { Column, Entity, JoinColumn, ManyToOne } from 'typeorm'
 import { BaseModel } from './Base.model'
 import { TaskListModel } from './TaskList.model'
 
-@Entity()
+@Entity({ name: 'tasks' })
 export class TaskModel extends BaseModel {
   @Column()
     title: string
@@ -10,10 +10,10 @@ export class TaskModel extends BaseModel {
   @Column()
     description?: string
 
-  @Column()
+  @Column({ name: 'task_list_id' })
     taskListId: string
 
   @ManyToOne(() => TaskListModel, (list) => list.tasks)
-  @JoinColumn({ name: 'taskListId' })
+  @JoinColumn({ name: 'task_list_id' })
     list: TaskListModel
 }

@@ -1,12 +1,12 @@
-import { CreateDateColumn, DeleteDateColumn, PrimaryColumn } from 'typeorm'
+import { CreateDateColumn, DeleteDateColumn, PrimaryGeneratedColumn } from 'typeorm'
 
 export abstract class BaseModel {
-  @PrimaryColumn('uuid')
+  @PrimaryGeneratedColumn('uuid')
     id: string
 
-  @CreateDateColumn()
+  @CreateDateColumn({ name: 'created_at' })
     createdAt: Date
 
-  @DeleteDateColumn()
-    updateDate?: Date
+  @DeleteDateColumn({ name: 'updated_at' })
+    updatedAt?: Date
 }

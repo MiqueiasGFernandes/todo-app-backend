@@ -2,7 +2,7 @@ import { Column, Entity, OneToMany } from 'typeorm'
 import { BaseModel } from './Base.model'
 import { TaskModel } from './Task.model'
 
-@Entity()
+@Entity({ name: 'task_lists' })
 export class TaskListModel extends BaseModel {
   @Column()
     title: string
