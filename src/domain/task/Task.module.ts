@@ -1,8 +1,9 @@
 import { Global, Module } from '@nestjs/common'
 import { AddTaskController } from './controllers/AddTask.controller'
-import { AddTaskService } from './services'
+import { AddTaskListService, AddTaskService } from './services'
 import { TypeOrmModule } from '@nestjs/typeorm'
 import { TaskListModel, TaskModel } from '@domain/models'
+import { AddTaskListController } from './controllers'
 
 @Global()
 @Module({
@@ -12,7 +13,7 @@ import { TaskListModel, TaskModel } from '@domain/models'
       TaskModel
     ])
   ],
-  controllers: [AddTaskController],
-  providers: [AddTaskService]
+  controllers: [AddTaskController, AddTaskListController],
+  providers: [AddTaskService, AddTaskListService]
 })
 export class TaskModule {}
