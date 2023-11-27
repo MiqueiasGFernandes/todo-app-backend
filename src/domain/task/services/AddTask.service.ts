@@ -3,6 +3,7 @@ import { type AddTaskOutputDto, type AddTaskInputDto } from '../dtos'
 import { TaskModel, TaskListModel } from '@domain/models'
 import { HttpException, HttpStatus } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
+import { randomUUID } from 'crypto'
 
 export class AddTaskService {
   constructor (
@@ -25,6 +26,7 @@ export class AddTaskService {
 
   private async addNewtask (task: AddTaskInputDto): Promise<AddTaskOutputDto> {
     const newTaskModel: TaskModel = await this.taskRepository.save({
+      id: randomUUID(),
       title: task.title,
       description: task.description,
       taskListId: task.taskListId
