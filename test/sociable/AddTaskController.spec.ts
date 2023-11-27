@@ -53,11 +53,8 @@ describe('AddTaskController (sociable)', () => {
     await app.close()
   })
   test('WHEN POST /tasks. SHOULD success', async () => {
-    const generatedUuid = crypto.randomUUID()
-
     taskListRepository.findOneByOrFail?.mockResolvedValue({})
     taskRepository.save?.mockImplementation(async data => await Promise.resolve({
-      id: generatedUuid,
       ...data
     }))
 
@@ -74,7 +71,7 @@ describe('AddTaskController (sociable)', () => {
       .send(JSON.stringify(data))
 
     expect(sut.status).toBe(201)
-    expect(sut.body.id).toBe(generatedUuid)
+    expect(typeof sut.body.id).toBe('string')
     expect(sut.body.title).toBe(data.title)
     expect(sut.body.description).toBe(data.description)
     expect(sut.body.taskListId).toBe(data.taskListId)
